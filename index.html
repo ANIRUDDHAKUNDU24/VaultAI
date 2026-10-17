@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#071426" />
+  <meta name="description" content="VaultAI synthetic AML research workspace" />
+  <title>VaultAI — Financial Intelligence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="auth-mode">
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <div id="auth-shell" class="auth-shell" aria-live="polite"></div>
+  <header class="topbar glass">
+    <a class="brand" href="#command" aria-label="VaultAI command center"><span class="brand-mark"><i></i><i></i><i></i></span><span>vault<span class="brand-ai">ai</span></span></a>
+    <div class="top-context"><span class="live-dot"></span><span>RESEARCH WORKSPACE</span><span class="divider"></span><span class="synthetic-pill"><span></span>SYNTHETIC DATA</span></div>
+    <div class="top-actions"><label class="run-picker"><span>RUN</span><select id="global-run" aria-label="Select experiment run"><option value="run-043">FL-043 · Reproducible</option><option value="run-042">FL-042 · UI fixture</option><option value="run-041">FL-041 · Earlier fixture</option></select><b>⌄</b></label><button class="icon-button" id="refresh-btn" aria-label="Refresh data" title="Refresh data">↻</button><button class="icon-button logout-button" id="logout-btn" aria-label="Log out">Log out</button></div>
+  </header>
+  <nav class="nav-shell glass" aria-label="Main navigation"><a class="nav-item active" href="#command" data-page="command"><span class="nav-icon">⌘</span><span>Command Center</span></a><a class="nav-item" href="#models" data-page="models"><span class="nav-icon">◫</span><span>Model Intelligence</span></a><a class="nav-item" href="#privacy" data-page="privacy"><span class="nav-icon">◈</span><span>Privacy Lab</span></a><a class="nav-item" href="#investigation" data-page="investigation"><span class="nav-icon">◎</span><span>Investigation Studio</span></a><a class="nav-item" href="#infrastructure" data-page="infrastructure"><span class="nav-icon">⌁</span><span>Infrastructure</span></a><div class="nav-status"><span class="workspace-dot"></span>Local demo · unmonitored</div></nav>
+  <main id="app" tabindex="-1"></main>
+  <footer class="footer"><span>VAULTAI <span class="muted">/ IBM Z DATATHON 2026 · TEAM TECHSHARKS</span></span><span>RESEARCH PROTOTYPE <span class="footer-dot">•</span> NOT FOR PRODUCTION DECISIONS</span></footer>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="auth-service.js"></script>
+  <script src="auth.js"></script>
+  <script src="data/experiment-data.js"></script>
+  <script src="data/hi-small-data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+
+# Keep locally supplied benchmark files out of source control.
+HI-Small_Trans.csv
+HI-Large_Trans.csv
+HI-Small_Patterns.txt
+HI-Large_Patterns.txt
+data/raw/

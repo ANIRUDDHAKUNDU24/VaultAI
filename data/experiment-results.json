@@ -1,0 +1,79 @@
+{
+  "run_id": "FL-043",
+  "label": "Federated logistic-regression demonstration",
+  "seed": 20261014,
+  "synthetic": true,
+  "label_definition": "Rule-generated target: weighted synthetic behavior features exceed a fixed threshold.",
+  "feature_names": [
+    "velocity",
+    "amount_pattern",
+    "fanout",
+    "cycle_hint"
+  ],
+  "train_rows": 13500,
+  "evaluation_rows": 4500,
+  "evaluation_protocol": "Per-bank 75/25 split before training; common combined held-out test set; threshold 0.50.",
+  "models": "Logistic regression; batch gradient descent; federated weighted model-parameter averaging.",
+  "rounds": 12,
+  "local_steps_per_round": 2,
+  "class_weight_positive": 16.0,
+  "evaluation_timestamp_utc": "2026-10-17T07:43:17+00:00",
+  "results": [
+    {
+      "name": "Bank A isolated",
+      "recall": 0.6059113300492611,
+      "precision": 1.0,
+      "prauc": 0.9852053093518215,
+      "fpr": 0.0,
+      "threshold": 0.5,
+      "n": 4500,
+      "pos": 203,
+      "tp": 123,
+      "fp": 0,
+      "fn": 80,
+      "tn": 4297
+    },
+    {
+      "name": "Bank B isolated",
+      "recall": 1.0,
+      "precision": 0.2434052757793765,
+      "prauc": 0.9855539272026126,
+      "fpr": 0.14684663718873633,
+      "threshold": 0.5,
+      "n": 4500,
+      "pos": 203,
+      "tp": 203,
+      "fp": 631,
+      "fn": 0,
+      "tn": 3666
+    },
+    {
+      "name": "Bank C isolated",
+      "recall": 1.0,
+      "precision": 0.07257776188773686,
+      "prauc": 0.9887929451150744,
+      "fpr": 0.6036769839422853,
+      "threshold": 0.5,
+      "n": 4500,
+      "pos": 203,
+      "tp": 203,
+      "fp": 2594,
+      "fn": 0,
+      "tn": 1703
+    },
+    {
+      "name": "VaultAI federated",
+      "recall": 1.0,
+      "precision": 0.16188197767145135,
+      "prauc": 0.9966459729425539,
+      "fpr": 0.24458924831277637,
+      "threshold": 0.5,
+      "n": 4500,
+      "pos": 203,
+      "tp": 203,
+      "fp": 1051,
+      "fn": 0,
+      "tn": 3246
+    }
+  ]
+}
