@@ -2,6 +2,16 @@
 
 VaultAI is a local AML/federated-learning research demo. Its current analysis uses generated synthetic rows. It is not a production banking, enforcement, or compliance system.
 
+## Architecture diagrams
+
+### User and analysis flow
+
+![VaultAI user and analysis flow](docs/images/vaultai-user-and-analysis-flow.jpeg)
+
+### Local application architecture
+
+![VaultAI local application architecture](docs/images/vaultai-local-application-architecture.png)
+
 ## Start the site and local API
 
 Requires Python 3.10 or newer. The site and API use only Python's standard library; the included model experiment is also dependency-free.
@@ -11,6 +21,12 @@ python dev_server.py
 ```
 
 Then open `http://localhost:8000`. Sign in using the public demo account `demo@vaultai.dev` / `VaultAI@2026`, or create a local demo account. After signing in, choose **Run synthetic analysis** on the dashboard. The browser sends a same-origin `POST /api/runs`, receives a run ID, polls `GET /api/runs/{run_id}`, and fetches `GET /api/runs/{run_id}/results` when complete. The run is executed on a background worker so the request does not block while the model runs. The Infrastructure page and refresh button call `GET /api/health`.
+
+## Public demo deployment
+
+`render.yaml` configures a free Render web service for this demo. Connect this GitHub repository to Render and create a **Blueprint** from it; Render will build the Python app and provide a public `onrender.com` URL. The root URL redirects visitors to `/login`. Render's free web service can sleep while idle, and in-memory jobs are cleared when the process restarts.
+
+This is a public research demo, not production authentication: accounts and sessions are stored in each visitor's browser, and the demo credentials are public. Use synthetic data only. Never enter real customer, personal, or banking information. Uploaded CSV content is processed by the public service in memory; anyone can submit a valid demo request. Do not rely on this deployment for private investigations or durable storage.
 
 API routes:
 

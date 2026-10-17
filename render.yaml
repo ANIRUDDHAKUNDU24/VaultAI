@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: vaultai-demo
+    runtime: python
+    plan: free
+    buildCommand: python -m compileall -q .
+    startCommand: python dev_server.py
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.7
+      - key: HOST
+        value: 0.0.0.0

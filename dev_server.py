@@ -9,6 +9,7 @@ from datetime import datetime, timezone
 from functools import partial
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 import json
+import os
 from pathlib import Path
 import threading
 import uuid
@@ -237,7 +238,10 @@ class SPAHandler(SimpleHTTPRequestHandler):
 
 
 if __name__ == "__main__":
-    server = ThreadingHTTPServer(("127.0.0.1", 8000), partial(SPAHandler, directory=str(ROOT)))
-    print("VaultAI local app/API: http://localhost:8000/login (Ctrl+C to stop)")
-    print("API health: http://localhost:8000/api/health")
+    host = os.environ.get("HOST", "127.0.0.1")
+    port = int(os.environ.get("PORT", "8000"))
+    server = ThreadingHTTPServer((host, port), partial(SPAHandler, directory=str(ROOT)))
+    display_host = "localhost" if host in {"127.0.0.1", "0.0.0.0"} else host
+    print(f"VaultAI app/API: http://{display_host}:{port}/login (Ctrl+C to stop)")
+    print(f"API health: http://{display_host}:{port}/api/health")
     server.serve_forever()
